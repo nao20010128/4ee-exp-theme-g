@@ -1,7 +1,7 @@
 set terminal png size 1280,960
 set output 'tmp/main.png'
 
-set title "Impulse response for second-order lag system with multiple ξ value"
+set title "Impulse response for second-order lag system with different ξ value"
 set xlabel "Time (second)"
 set grid
 

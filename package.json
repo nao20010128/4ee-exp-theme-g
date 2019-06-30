@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pre": "node jobs/test.js | tee tmp/jobs.txt ; gnuplot gnuplot/test.txt",
+    "main": "node jobs/main.js | tee tmp/main.txt ; gnuplot gnuplot/main.txt",
+    "extra1": "node jobs/extra1.js | tee tmp/extra1.txt ; gnuplot gnuplot/extra1.txt"
   },
   "author": "",
   "license": "ISC",
