@@ -1,4 +1,5 @@
 set terminal png
 set output 'tmp/test.png'
+set grid
 
 plot "tmp/test.txt" using 1:2 with lines
