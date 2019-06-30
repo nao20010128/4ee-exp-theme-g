@@ -1,0 +1,41 @@
+{
+  "name": "4ee-exp-theme-g",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.0.1",
+    "husky": "^2.7.0",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,md}": [
+      "prettier --print-width 200 --write",
+      "git add"
+    ],
+    "*.js": [
+      "prettier --print-width 200 --write",
+      "eslint",
+      "git add"
+    ],
+    "*.png": [
+      "optipng -strip all -o9",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.0"
+  }
+}

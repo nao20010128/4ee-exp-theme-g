@@ -1,0 +1,4 @@
+set terminal png
+set output 'tmp/test.png'
+
+plot "tmp/test.txt" using 1:2 with lines
