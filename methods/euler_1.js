@@ -1,3 +1,5 @@
+// オイラー法 一次用
+
 const BN = require("bignumber.js");
 module.exports = function*(func, x, t, h, len) {
   x = new BN(x);
