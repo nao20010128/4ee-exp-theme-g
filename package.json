@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "all": "npm run pre ; npm run main ; npn run extra1 ; npm run extra3",
     "pre": "node jobs/test.js | tee tmp/test.txt ; gnuplot gnuplot/test.txt",
-    "main": "node jobs/main.js | tee tmp/main.txt ; gnuplot gnuplot/main.txt",
-    "extra1": "node jobs/extra1.js | tee tmp/extra1.txt ; gnuplot gnuplot/extra1.txt",
+    "main": "npm run main_impulse ; npm run main_step",
+    "main_impulse": "node jobs/main_impulse.js | tee tmp/main_impulse.txt ; gnuplot gnuplot/main_impulse.txt",
+    "main_step": "node jobs/main_step.js | tee tmp/main_step.txt ; gnuplot gnuplot/main_step.txt",
+    "extra1": "npm run extra1_impulse ; npm run extra1_step",
+    "extra1_impulse": "node jobs/extra1_impulse.js | tee tmp/extra1_impulse.txt ; gnuplot gnuplot/extra1_impulse.txt",
+    "extra1_step": "node jobs/extra1_step.js | tee tmp/extra1_step.txt ; gnuplot gnuplot/extra1_step.txt",
     "extra3": "node jobs/extra3.js | tee tmp/extra3.txt ; gnuplot gnuplot/extra3.txt"
   },
-  "author": "",
+  "author": "nao2001028nao",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^10.0.2",
