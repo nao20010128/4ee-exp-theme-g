@@ -18,11 +18,12 @@ module.exports = function(xi, omega, func, b) {
   // (bignumber.jsを使っている時点で遅いとは考えてはいけない)
   const ptY = xi.times(omega).times(-2);
   const ptX = omega.pow(2).negated();
+  const ptFunc = omega.pow(2).times(b);
 
   return function(x, y, t) {
     x = new BN(x);
     y = new BN(y);
     t = new BN(t);
-    return BN.sum(ptY.times(y), ptX.times(x), b.times(func(t)));
+    return BN.sum(ptY.times(y), ptX.times(x), ptFunc.times(func(t)));
   };
 };
