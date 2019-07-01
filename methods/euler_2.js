@@ -15,8 +15,8 @@ module.exports = function*(func, x, y, t, h, len) {
     const oldX = x,
       oldY = y,
       oldT = t;
-    x = oldX.plus(h.times(oldY));
     y = oldY.plus(h.times(func(oldX, oldY, oldT)));
+    x = oldX.plus(h.times(oldY));
     t = oldT.plus(h);
     yield [t, x, y];
   }
