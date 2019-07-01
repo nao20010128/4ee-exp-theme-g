@@ -1,19 +1,19 @@
 const BN = require("bignumber.js");
 const euler = require("../methods/euler_2");
+const rk = require("../methods/rk_2");
 const sols = require("../functions/secondorderlag");
-const impulse = require("../functions/impulse");
+const step = require("../functions/step");
 
-// 考察1
-// このソースコードはオイラー法のものである。
-// また、インパルス応答である。
+// 考察3
+// このソースコードはオイラー法とルンゲ・クッタ法の出力を比較するものである。
+// また、ステップ応答である。
 
-// ξの指示が無いため、ξ=1とする。
-// また、ωの値はomgの配列の内容とした。
-const omg = ["0.5", "1", "1.5"].map(a => new BN(a));
+// ξの指示が無いため、ξ=0.6とする。
+// ωの指示が無いため、ω=1とする。
 
 function* merger() {
   // 関数のxの値を連結するため
-  const lines = omg.map(num => euler(sols(1, num, impulse, 1), 0, 0, 0, new BN("0.1"), 20));
+  const lines = [euler(sols("0.6", 1, step, 1), 0, 0, 0, new BN("0.1"), 20), rk(sols("0.6", 1, step, 1), 0, 0, 0, new BN("0.1"), 20)];
   while (true) {
     const next = lines.map(a => a.next());
     if (next[0].done) {

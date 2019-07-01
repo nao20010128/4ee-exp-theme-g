@@ -6,7 +6,8 @@
   "scripts": {
     "pre": "node jobs/test.js | tee tmp/test.txt ; gnuplot gnuplot/test.txt",
     "main": "node jobs/main.js | tee tmp/main.txt ; gnuplot gnuplot/main.txt",
-    "extra1": "node jobs/extra1.js | tee tmp/extra1.txt ; gnuplot gnuplot/extra1.txt"
+    "extra1": "node jobs/extra1.js | tee tmp/extra1.txt ; gnuplot gnuplot/extra1.txt",
+    "extra3": "node jobs/extra3.js | tee tmp/extra3.txt ; gnuplot gnuplot/extra3.txt"
   },
   "author": "",
   "license": "ISC",

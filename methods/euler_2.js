@@ -16,8 +16,8 @@ module.exports = function*(func, x, y, t, h, len) {
       oldY = y,
       oldT = t;
     x = oldX.plus(h.times(oldY));
-    y = oldY.plus(h.times(func(oldX, oldY, t)));
-    t = t.plus(h);
+    y = oldY.plus(h.times(func(oldX, oldY, oldT)));
+    t = oldT.plus(h);
     yield [t, x, y];
   }
 };
