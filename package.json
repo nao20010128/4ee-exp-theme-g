@@ -37,10 +37,6 @@
       "prettier --print-width 200 --write",
       "eslint",
       "git add"
-    ],
-    "*.png": [
-      "optipng -strip all -o9",
-      "git add"
     ]
   },
   "dependencies": {

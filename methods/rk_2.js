@@ -1,7 +1,8 @@
+const BN = require("bignumber.js");
 // ルンゲ・クッタ法 二次用
 // 注意: このプログラムは⊿tの項をfuncとして括り出している。
 // その部分はfunctions/secondorderlag.jsを参照されたい。
-const BN = require("bignumber.js");
+
 module.exports = function*(func, x, y, t, h, len) {
   x = new BN(x);
   y = new BN(y);
