@@ -1,1 +1,3 @@
 node_modules/
+tmp/*.png
+tmp/*.txt
