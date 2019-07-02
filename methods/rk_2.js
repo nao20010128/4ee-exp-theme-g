@@ -17,7 +17,7 @@ module.exports = function*(func, x, y, t, h, len) {
       oldY = y,
       furtherT = t.plus(hd2),
       nextT = t.plus(h);
-    // k[1234]はx、m[1234]はyに対応する
+    // m[1234]はx、k[1234]はyに対応する
     const k1 = h.times(func(x, y, t));
     const m1 = h.times(y);
     const k2 = h.times(func(x.plus(m1.div(2)), y.plus(k1.div(2)), furtherT));
@@ -26,8 +26,8 @@ module.exports = function*(func, x, y, t, h, len) {
     const m3 = h.times(m2.div(2).plus(y));
     const k4 = h.times(func(x.plus(m3), y.plus(k3), nextT));
     const m4 = h.times(m3.plus(y));
-    x = oldX.plus(BN.sum(k1, k2.times(2), k3.times(2), k4).div(6));
-    y = oldY.plus(BN.sum(m1, m2.times(2), m3.times(2), m4).div(6));
+    x = oldX.plus(BN.sum(m1, m2.times(2), m3.times(2), m4).div(6));
+    y = oldY.plus(BN.sum(k1, k2.times(2), k3.times(2), k4).div(6));
 
     t = t.plus(h);
     yield [t, x, y];
