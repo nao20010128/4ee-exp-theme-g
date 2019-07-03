@@ -30,7 +30,7 @@ module.exports = function*(func, x, y, t, h, len) {
     x = oldX.plus(BN.sum(m1, m2.times(2), m3.times(2), m4).div(6));
     y = oldY.plus(BN.sum(k1, k2.times(2), k3.times(2), k4).div(6));
 
-    t = t.plus(h);
+    t = nextT;
     yield [t, x, y];
   }
 };

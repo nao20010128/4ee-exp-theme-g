@@ -1,5 +1,4 @@
 const fs = require("fs");
-const BN = require("bignumber.js");
 const rk = require("../methods/rk_2");
 const sols = require("../functions/secondorderlag");
 const sine = require("../functions/sine");
@@ -14,19 +13,19 @@ const sine = require("../functions/sine");
 const files = [
   {
     name: "tmp/extra5_10.txt",
-    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("10"), 30)
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "10", 30)
   },
   {
     name: "tmp/extra5_1.txt",
-    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("1"), 30)
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "1", 30)
   },
   {
     name: "tmp/extra5_0.1.txt",
-    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("0.1"), 30)
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "0.1", 30)
   },
   {
     name: "tmp/extra5_0.01.txt",
-    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("0.01"), 30)
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "0.01", 30)
   }
 ];
 

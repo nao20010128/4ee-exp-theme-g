@@ -1,4 +1,3 @@
-const BN = require("bignumber.js");
 const euler = require("../methods/euler_2");
 const sols = require("../functions/secondorderlag");
 const step = require("../functions/step");
@@ -9,11 +8,11 @@ const step = require("../functions/step");
 
 // ξの指示が無いため、ξ=1とする。
 // また、ωの値はomgの配列の内容とした。
-const omg = ["0.5", "1", "1.5"].map(a => new BN(a));
+const omg = ["0.5", "1", "1.5"];
 
 function* merger() {
   // 関数のxの値を連結するため
-  const lines = omg.map(num => euler(sols(1, num, step, 1), 0, 0, 0, new BN("0.1"), 20));
+  const lines = omg.map(num => euler(sols(1, num, step, 1), 0, 0, 0, "0.1", 20));
   while (true) {
     const next = lines.map(a => a.next());
     if (next[0].done) {
