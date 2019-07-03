@@ -32,10 +32,6 @@
     }
   },
   "lint-staged": {
-    "*.{json,md}": [
-      "prettier --print-width 200 --write",
-      "git add"
-    ],
     "*.js": [
       "prettier --print-width 200 --write",
       "eslint",
