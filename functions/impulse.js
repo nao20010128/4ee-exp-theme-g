@@ -8,7 +8,7 @@ const pulseHeight = 1 / pulseTime;
 
 module.exports = function(t) {
   t = new BN(t);
-  if (t.isZero()) {
+  if (t.eq(pulseTime)) {
     return pulseHeight;
   } else {
     return 0;
