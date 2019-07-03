@@ -1,29 +1,54 @@
+const fs = require("fs");
 const BN = require("bignumber.js");
 const rk = require("../methods/rk_2");
 const sols = require("../functions/secondorderlag");
 const sine = require("../functions/sine");
 
 // 考察5
-// このソースコードは時間幅を変えたことにより起こる誤差を見るものである。
+// このソースコードは時間幅(⊿t)を変えたことにより起こる誤差を見るものである。
 // ルンゲ・クッタ法を用いている。
 
 // ξの指示が無いため、ξ=0.6とする。
 // ωの指示が無いため、ω=1とする。
 
-function* merger() {
-  // 関数のxの値を連結するため
-  const lines = [rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("0.1"), 30), rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("0.01"), 30)];
-  while (true) {
-    const next = lines.map(a => a.next());
-    if (next[0].done) {
-      return;
-    }
-    const t = next[0].value[0];
-    const allX = next.map(a => a.value[1]);
-    yield [t, ...allX];
+const files = [
+  {
+    name: "tmp/extra5_10.txt",
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("10"), 30)
+  },
+  {
+    name: "tmp/extra5_1.txt",
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("1"), 30)
+  },
+  {
+    name: "tmp/extra5_0.1.txt",
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("0.1"), 30)
+  },
+  {
+    name: "tmp/extra5_0.01.txt",
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, new BN("0.01"), 30)
   }
+];
+
+function calc(name, iter, cb) {
+  const stream = fs.createWriteStream(name);
+  for (let line of iter) {
+    stream.write(line.map(a => +a).join(" ") + "\n");
+  }
+  stream.end();
+  stream.on("finish", cb);
 }
 
-for (let line of merger()) {
-  console.log(line.map(a => +a).join(" "));
+let num = 0;
+
+function next() {
+  if (num >= files.length) {
+    return;
+  }
+  console.log(files[num].name);
+  calc(files[num].name, files[num].iter, () => {
+    num++;
+    next();
+  });
 }
+next();

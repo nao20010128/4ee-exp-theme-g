@@ -4,16 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "all": "npm run pre ; npm run main ; npn run extra1 ; npm run extra3",
+    "all": "npm run pre ; npm run main ; npm run extra",
     "pre": "node jobs/test.js | tee tmp/test.txt ; gnuplot gnuplot/test.txt",
     "main": "npm run main_impulse ; npm run main_step",
     "main_impulse": "node jobs/main_impulse.js | tee tmp/main_impulse.txt ; gnuplot gnuplot/main_impulse.txt",
     "main_step": "node jobs/main_step.js | tee tmp/main_step.txt ; gnuplot gnuplot/main_step.txt",
+    "extra": "npm run extra1 ; npm run extra3 ; npm run extra4 ; npm run extra5",
     "extra1": "npm run extra1_impulse ; npm run extra1_step",
     "extra1_impulse": "node jobs/extra1_impulse.js | tee tmp/extra1_impulse.txt ; gnuplot gnuplot/extra1_impulse.txt",
     "extra1_step": "node jobs/extra1_step.js | tee tmp/extra1_step.txt ; gnuplot gnuplot/extra1_step.txt",
     "extra3": "node jobs/extra3.js | tee tmp/extra3.txt ; gnuplot gnuplot/extra3.txt",
-    "extra4": "node jobs/extra4.js | tee tmp/extra4.txt ; gnuplot gnuplot/extra4.txt"
+    "extra4": "node jobs/extra4.js | tee tmp/extra4.txt ; gnuplot gnuplot/extra4.txt",
+    "extra5": "node jobs/extra5.js ; gnuplot gnuplot/extra5.txt"
   },
   "author": "nao2001028nao",
   "license": "ISC",
