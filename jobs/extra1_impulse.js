@@ -6,13 +6,14 @@ const impulse = require("../functions/impulse");
 // このソースコードはオイラー法のものである。
 // また、インパルス応答である。
 
-// ξの指示が無いため、ξ=1とする。
+// ξの値は配列zetaの内容とする。
+const zeta = ["0.5", "1", "1.5"];
 // また、ωの値はomgの配列の内容とした。
 const omg = ["0.5", "1", "1.5"];
 
 function* merger() {
   // 関数のxの値を連結するため
-  const lines = omg.map(num => euler(sols(1, num, impulse, 1), 0, 0, 0, "0.1", 20));
+  const lines = [].concat.apply([], zeta.map(zta => omg.map(num => euler(sols(zta, num, impulse, 1), 0, 0, 0, "0.1", 20))));
   while (true) {
     const next = lines.map(a => a.next());
     if (next[0].done) {

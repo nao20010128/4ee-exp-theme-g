@@ -13,7 +13,7 @@ const omg = ["0.5", "1", "1.5"];
 
 function* merger() {
   // 関数のxの値を連結するため
-  const lines = zeta.flatMap(zta => omg.map(num => euler(sols(zta, num, step, 1), 0, 0, 0, "0.1", 20)));
+  const lines = [].concat.apply([], zeta.map(zta => omg.map(num => euler(sols(zta, num, step, 1), 0, 0, 0, "0.1", 20))));
   while (true) {
     const next = lines.map(a => a.next());
     if (next[0].done) {
