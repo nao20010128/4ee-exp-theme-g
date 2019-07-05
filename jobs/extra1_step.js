@@ -9,7 +9,7 @@ const step = require("../functions/step");
 // ξの値は配列zetaの内容とする。
 const zeta = ["0.5", "1", "1.5"];
 // また、ωの値はomgの配列の内容とした。
-const omg = ["0.5", "1", "1.5"];
+const omg = ["-0.1", "1", "1.5"];
 
 function* merger() {
   // 関数のxの値を連結するため
