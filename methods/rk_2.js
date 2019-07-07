@@ -1,5 +1,5 @@
 const BN = require("bignumber.js");
-// ルンゲ・クッタ法 二次用
+// ルンゲ・クッタ法 2階微分方程式用
 // 注意: このプログラムは⊿tの項をfuncとして括り出している。
 // その部分はfunctions/secondorderlag.jsを参照されたい。
 

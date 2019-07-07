@@ -1,5 +1,5 @@
 const BN = require("bignumber.js");
-// オイラー法 一次用
+// オイラー法 1階微分方程式用
 
 module.exports = function*(func, x, t, h, len) {
   x = new BN(x);
