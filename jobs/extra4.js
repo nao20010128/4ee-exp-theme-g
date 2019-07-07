@@ -1,6 +1,8 @@
 const rk = require("../methods/rk_2");
 const sols = require("../functions/secondorderlag");
 const sine = require("../functions/sine");
+const sine2 = sine.withAngularFreq(2);
+const sine4 = sine.withAngularFreq(4);
 
 // 考察4
 // このソースコードは二次遅れ系に正弦波を入力したときの応答を見るものである。
@@ -9,6 +11,20 @@ const sine = require("../functions/sine");
 // ξの指示が無いため、ξ=0.6とする。
 // ωの指示が無いため、ω=1とする。
 
-for (let line of rk(sols("0.6", 1, sine, 1), 0, 0, 0, "0.1", 30)) {
+function* merger() {
+  // 関数のxの値を連結するため
+  const lines = [rk(sols("0.6", 1, sine, 1), 0, 0, 0, "0.1", 30), rk(sols("0.6", 1, sine2, 1), 0, 0, 0, "0.1", 30), rk(sols("0.6", 1, sine4, 1), 0, 0, 0, "0.1", 30)];
+  while (true) {
+    const next = lines.map(a => a.next());
+    if (next[0].done) {
+      return;
+    }
+    const t = next[0].value[0];
+    const allX = next.map(a => a.value[1]);
+    yield [t, ...allX];
+  }
+}
+
+for (let line of merger()) {
   console.log(line.map(a => +a).join(" "));
 }
