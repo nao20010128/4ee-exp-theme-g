@@ -12,16 +12,8 @@ const sine = require("../functions/sine");
 
 const files = [
   {
-    name: "tmp/extra5_10.txt",
-    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "10", 30)
-  },
-  {
-    name: "tmp/extra5_1.txt",
-    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "1", 30)
-  },
-  {
-    name: "tmp/extra5_0.1.txt",
-    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "0.1", 30)
+    name: "tmp/extra5_0.2.txt",
+    iter: rk(sols("0.6", 1, sine, 1), 0, 0, 0, "0.2", 30)
   },
   {
     name: "tmp/extra5_0.01.txt",
