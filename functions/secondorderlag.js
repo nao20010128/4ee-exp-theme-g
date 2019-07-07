@@ -21,9 +21,6 @@ module.exports = function(zeta, omega, func, b) {
   const ptFunc = omega.pow(2).times(b);
 
   return function(x, y, t) {
-    x = new BN(x);
-    y = new BN(y);
-    t = new BN(t);
     return BN.sum(ptY.times(y), ptX.times(x), ptFunc.times(func(t)));
   };
 };
